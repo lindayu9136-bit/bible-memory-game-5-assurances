@@ -161,7 +161,7 @@
             state.quiz.options = [...combinedDistractors, correctWord].sort(() => Math.random() - 0.5);
         }
 
-        function handleChoice(choice) {
+       function handleChoice(choice) {
   if (state.quiz.feedback !== 'none' || state.quiz.isAllSolved) return;
 
   const correctWord =
@@ -169,28 +169,28 @@
 
   // ✅ 정답
   if (choice === correctWord) {
+    // 1) 먼저 '정답입니다'를 보여주기 위해 딱 1번 렌더
     state.quiz.feedback = 'correct';
+    render();
 
-    // ❗여기서 바로 render() 하지 않음 → 깜빡(2~3회 렌더) 줄이기
+    // 2) 충분히 보여준 뒤(600ms) 다음 단계로 넘어가며 딱 1번만 다시 렌더
     setTimeout(() => {
-      // 정답 처리
       state.quiz.solvedIndices.push(state.quiz.blankIndices[state.quiz.currentPointer]);
 
-      // 다음으로
-      if (state.quiz.currentPointer + 1 >= state.quiz.blankIndices.length) {
+      const isLast = state.quiz.currentPointer + 1 >= state.quiz.blankIndices.length;
+
+      if (isLast) {
         state.quiz.isAllSolved = true;
         state.quiz.feedback = 'none';
         render();
-
-        // 성공 화면 전환(원래 5000ms였는데 너무 길면 1200~2000 추천)
-        setTimeout(() => setStep('SUCCESS'), 1500);
+        setTimeout(() => setStep('SUCCESS'), 1200);
       } else {
         state.quiz.currentPointer++;
         state.quiz.feedback = 'none';
         updateQuizOptions();
         render();
       }
-    }, 180); // 150~220 사이 추천 (짧게 '정답입니다' 보여주기)
+    }, 600); // ✅ 정답 문구 표시 시간 (500~800 추천)
 
     return;
   }
@@ -201,8 +201,9 @@
   setTimeout(() => {
     state.quiz.feedback = 'none';
     render();
-  }, 450);
+  }, 600);
 }
+
 
         // --- 화면 렌더러 ---
         function renderHome() {
