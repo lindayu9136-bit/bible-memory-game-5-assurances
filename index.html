@@ -1,1 +1,128 @@
-<h1>GitHub Pages 연결 성공 🎉🎉</h1>
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>약속의 말씀: 내 마음에 쏙쏙</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=Noto+Serif+KR:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        hunter: '#355E3B',
+                        cream: '#FFFDD0',
+                        gold: '#F3C623',
+                        vibrantYellow: '#FFD700', 
+                        forestDeep: '#2A4B2F',
+                        brickRed: '#E74C3C' 
+                    },
+                    fontFamily: {
+                        serif: ['"Gowun Batang"', 'serif'],
+                        classic: ['"Noto Serif KR"', 'serif'],
+                        sans: ['Pretendard', 'ui-sans-serif', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'sans-serif']
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.8s ease-out forwards',
+                        'slide-up': 'slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+                        'float': 'float 5s ease-in-out infinite',
+                        'char-glow-fade': 'charGlowFade 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards',
+                        'icon-bounce-rotate': 'iconBounceRotate 2s ease-in-out infinite',
+                        'icon-heart-pulse': 'iconHeartPulse 1.5s ease-in-out infinite',
+                        'success-burst': 'successBurst 1.2s cubic-bezier(0.23, 1, 0.32, 1) forwards',
+                        'emoji-pop': 'emojiPop 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) infinite alternate',
+                        'loading-bar': 'loadingBar 5s linear forwards'
+                    },
+                    keyframes: {
+                        fadeIn: { '0%': { opacity: '0' }, '100%': { opacity: '1' } },
+                        slideUp: { '0%': { opacity: '0', transform: 'translateY(15px)' }, '100%': { opacity: '1', transform: 'translateY(0)' } },
+                        float: { '0%, 100%': { transform: 'translateY(0)' }, '50%': { transform: 'translateY(-10px)' } },
+                        charGlowFade: {
+                          '0%': { opacity: '0', transform: 'translateY(10px)', filter: 'blur(8px)', textShadow: '0 0 0px #F3C623' },
+                          '60%': { opacity: '1', transform: 'translateY(-2px)', filter: 'blur(0px)', textShadow: '0 0 20px #F3C623' },
+                          '100%': { opacity: '1', transform: 'translateY(0)', filter: 'blur(0px)', textShadow: '0 0 10px rgba(243, 198, 35, 0.5)' }
+                        },
+                        iconBounceRotate: {
+                          '0%, 100%': { transform: 'translateY(0) rotate(0deg) scale(1)', filter: 'drop-shadow(0 0 0px #F3C623)' },
+                          '50%': { transform: 'translateY(-10px) rotate(5deg) scale(1.1)', filter: 'drop-shadow(0 0 15px #F3C623)' }
+                        },
+                        iconHeartPulse: {
+                          '0%, 100%': { transform: 'scale(1)', filter: 'drop-shadow(0 0 0px #F3C623)' },
+                          '50%': { transform: 'scale(1.2)', filter: 'drop-shadow(0 0 12px #F3C623)' }
+                        },
+                        successBurst: { '0%': { transform: 'scale(0.9)', opacity: '0' }, '100%': { transform: 'scale(1)', opacity: '1' } },
+                        emojiPop: {
+                          '0%': { transform: 'scale(0.8) rotate(-10deg)' },
+                          '100%': { transform: 'scale(1.2) rotate(10deg)' }
+                        },
+                        loadingBar: {
+                          '0%': { width: '0%' },
+                          '100%': { width: '100%' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        :root {
+            --hunter: #355E3B;
+            --cream: #FFFDD0;
+            --gold: #F3C623;
+        }
+        body {
+            background-color: var(--hunter);
+            color: var(--cream);
+            -webkit-font-smoothing: antialiased;
+            overscroll-behavior-y: none;
+            user-select: none;
+            overflow-x: hidden;
+        }
+        .text-glow {
+            text-shadow: 0 0 8px rgba(243, 198, 35, 0.2);
+        }
+        .text-glow-strong {
+            text-shadow: 0 0 12px rgba(243, 198, 35, 0.3);
+        }
+        .text-glow-cream {
+            text-shadow: 0 0 8px rgba(255, 253, 208, 0.3);
+        }
+        .glass-panel {
+            background: rgba(255, 253, 208, 0.05);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(243, 198, 35, 0.15);
+            box-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.2);
+        }
+        .break-keep { word-break: keep-all; }
+        ::-webkit-scrollbar { display: none; }
+        
+        .btn-gold {
+            background: linear-gradient(135deg, #F3C623 0%, #E2B020 100%);
+            box-shadow: 0 6px 25px -5px rgba(243, 198, 35, 0.25);
+        }
+
+        h1, h2, h3 { font-family: "Noto Serif KR", serif; }
+        .bible-text { font-family: "Gowun Batang", serif; }
+        .ui-text { font-family: "Pretendard", sans-serif; }
+    </style>
+<script type="importmap">
+{
+  "imports": {
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "lucide-react": "https://esm.sh/lucide-react@^0.562.0",
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "react": "https://esm.sh/react@^19.2.3",
+    "vite": "https://esm.sh/vite@^7.3.1",
+    "@vitejs/plugin-react": "https://esm.sh/@vitejs/plugin-react@^5.1.2"
+  }
+}
+</script>
+</head>
+<body class="font-sans">
+    <div id="root"></div>
+    <!-- 빌드 시스템을 위한 진입점 스크립트 추가 -->
+    <script type="module" src="/index.tsx"></script>
+</body>
+</html>
