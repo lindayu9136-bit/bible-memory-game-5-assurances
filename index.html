@@ -162,32 +162,47 @@
         }
 
         function handleChoice(choice) {
-            if (state.quiz.feedback !== 'none' || state.quiz.isAllSolved) return;
-            const correctWord = state.quiz.words[state.quiz.blankIndices[state.quiz.currentPointer]].replace(/[.,?!]/g, "");
+  if (state.quiz.feedback !== 'none' || state.quiz.isAllSolved) return;
 
-            if (choice === correctWord) {
-                state.quiz.feedback = 'correct';
-                render();
-                setTimeout(() => {
-                    state.quiz.solvedIndices.push(state.quiz.blankIndices[state.quiz.currentPointer]);
-                    if (state.quiz.currentPointer + 1 >= state.quiz.blankIndices.length) {
-                        state.quiz.isAllSolved = true;
-                        state.quiz.feedback = 'none';
-                        render();
-                        setTimeout(() => setStep('SUCCESS'), 5000);
-                    } else {
-                        state.quiz.currentPointer++;
-                        state.quiz.feedback = 'none';
-                        updateQuizOptions();
-                        render();
-                    }
-                }, 300);
-            } else {
-                state.quiz.feedback = 'wrong';
-                render();
-                setTimeout(() => { state.quiz.feedback = 'none'; render(); }, 600);
-            }
-        }
+  const correctWord =
+    state.quiz.words[state.quiz.blankIndices[state.quiz.currentPointer]].replace(/[.,?!]/g, "");
+
+  // ✅ 정답
+  if (choice === correctWord) {
+    state.quiz.feedback = 'correct';
+
+    // ❗여기서 바로 render() 하지 않음 → 깜빡(2~3회 렌더) 줄이기
+    setTimeout(() => {
+      // 정답 처리
+      state.quiz.solvedIndices.push(state.quiz.blankIndices[state.quiz.currentPointer]);
+
+      // 다음으로
+      if (state.quiz.currentPointer + 1 >= state.quiz.blankIndices.length) {
+        state.quiz.isAllSolved = true;
+        state.quiz.feedback = 'none';
+        render();
+
+        // 성공 화면 전환(원래 5000ms였는데 너무 길면 1200~2000 추천)
+        setTimeout(() => setStep('SUCCESS'), 1500);
+      } else {
+        state.quiz.currentPointer++;
+        state.quiz.feedback = 'none';
+        updateQuizOptions();
+        render();
+      }
+    }, 180); // 150~220 사이 추천 (짧게 '정답입니다' 보여주기)
+
+    return;
+  }
+
+  // ❌ 오답
+  state.quiz.feedback = 'wrong';
+  render();
+  setTimeout(() => {
+    state.quiz.feedback = 'none';
+    render();
+  }, 450);
+}
 
         // --- 화면 렌더러 ---
         function renderHome() {
